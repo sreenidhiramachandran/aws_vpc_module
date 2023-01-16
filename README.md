@@ -20,3 +20,8 @@ Using this terraform code, we can create a VPC with six subnets: three public an
 |  enable_nat_gateway  | Variable that defines if a NAT gateway is required or not |
 
 
+
+To download project files to your local system, you need to execute
+```sh
+git clone https://github.com/sreenidhiramachandran/terraform_vpc_module.git
+```

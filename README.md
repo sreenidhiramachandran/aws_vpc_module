@@ -1,4 +1,4 @@
-# aws_vpc_module
+# terraform_aws_vpc_module
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 

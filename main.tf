@@ -12,7 +12,7 @@ resource "aws_vpc" "vpc" {
 }
 
 #===========================================================================================================
-# creating internet gateway
+# creating an internet gateway
 #===========================================================================================================
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.vpc.id
@@ -36,7 +36,7 @@ resource "aws_subnet" "public" {
 }
 
 #===========================================================================================================
-# creating private subnet
+# creating private subnets
 #===========================================================================================================
 resource "aws_subnet" "private" {
   count                   = local.subnets
@@ -50,7 +50,7 @@ resource "aws_subnet" "private" {
 }
 
 #===========================================================================================================
-# Creating elastic IP for NAT
+# Elastic IP for NAT gateway
 #===========================================================================================================
 resource "aws_eip" "nat" {
   count = var.enable_nat_gateway ? 1 : 0
@@ -61,7 +61,7 @@ resource "aws_eip" "nat" {
 }
 
 #===========================================================================================================
-# creating NAT gateway
+# Creating a NAT gateway
 #===========================================================================================================
 resource "aws_nat_gateway" "nat" {
   count = var.enable_nat_gateway ? 1 : 0
@@ -74,7 +74,7 @@ resource "aws_nat_gateway" "nat" {
 }
 
 #===========================================================================================================
-# creating public route table
+# Creating a public route table
 #===========================================================================================================
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.vpc.id
@@ -88,7 +88,7 @@ resource "aws_route_table" "public" {
 }
 
 #===========================================================================================================
-# creating private route table
+# Creating a private route table
 #===========================================================================================================
 resource "aws_route_table" "private" {
   vpc_id = aws_vpc.vpc.id
@@ -109,7 +109,7 @@ resource "aws_route" "enable_nat" {
 }
 
 #===========================================================================================================
-# creating public route table association
+# Public route table association
 #===========================================================================================================
 resource "aws_route_table_association" "public" {
   count          = local.subnets
@@ -118,7 +118,7 @@ resource "aws_route_table_association" "public" {
 }
 
 #===========================================================================================================
-# creating private route table association
+# Private route table association
 #===========================================================================================================
 resource "aws_route_table_association" "private" {
   count          = local.subnets

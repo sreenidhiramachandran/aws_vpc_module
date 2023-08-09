@@ -54,7 +54,7 @@ resource "aws_subnet" "private" {
 #===========================================================================================================
 resource "aws_eip" "nat" {
   count = var.enable_nat_gateway ? 1 : 0
-  domain = "vpc'
+  domain = "vpc"
   tags = {
     Name = "${var.project}-${var.environment}-natgw"
   }
